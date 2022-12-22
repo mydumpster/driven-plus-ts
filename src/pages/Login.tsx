@@ -30,7 +30,9 @@ export default function Login() {
         />
         <button type="submit">ENTRAR</button>
       </form>
-      <StyledLink to="/sign-up"><p>Não possuí uma conta? Cadastre-se</p></StyledLink>
+      <StyledLink to="/sign-up">
+        <p>Não possuí uma conta? Cadastre-se</p>
+      </StyledLink>
     </LoginContainer>
   );
 }
@@ -46,48 +48,51 @@ const LoginContainer = styled.div`
   }
   form {
     width: 100%;
-  }
-  input {
-    border-radius: 8px;
-    border: none;
-    color: #000;
-    font-family: "Roboto";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    height: 52px;
-    line-height: 16px;
-    padding-left: 14px;
-    width: 100%;
-    &::placeholder {
-      color: #7e7e7e;
+    input {
+      border-radius: 8px;
+      border: none;
+      color: #000;
+      font-family: "Roboto";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      height: 52px;
+      line-height: 16px;
+      padding-left: 14px;
+      width: 100%;
+      &::placeholder {
+        color: #7e7e7e;
+      }
+      &:focus {
+        outline: 2px solid #ff47917f;
+      }
     }
-    &:focus {
-      outline: 2px solid #ff47917f;
+
+    input[type="email"] {
+      margin-bottom: 16px;
+    }
+    button {
+      background-color: #ff4791;
+      border-radius: 8px;
+      border: none;
+      color: #fff;
+      font-family: "Roboto";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      height: 52px;
+      line-height: 16px;
+      margin: 24px 0;
+      width: 100%;
+    }
+    button:active {
+      background-color: #fb2d7f;
+      font-size: 16px;
+      font-weight: 700;
     }
   }
-  
-  input[type="email"] {
-    margin-bottom: 16px;
-  }
-  button {
-    background-color: #ff4791;
-    border-radius: 8px;
-    border: none;
-    color: #fff;
-    font-family: "Roboto";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    height: 52px;
-    line-height: 16px;
-    margin: 24px 0;
-    width: 100%;
-  }
-  button:active {
-    background-color: #fb2d7f;
-    font-size: 16px;
-    font-weight: 700;
+  @media (min-width: 500px) {
+    width: 50%;
   }
 `;
 
