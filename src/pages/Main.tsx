@@ -25,14 +25,14 @@ export default function Main() {
 }
 
 const MainContainer = styled.div`
-  max-width: 100vw;
-  overflow: hidden;
-  height: 100vh;
   align-items: center;
   background-color: #0E0E13;
   color: #fff;
   display: flex;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  height: 100vh;
   justify-content: center;
+  max-width: 100vw;
+  overflow: hidden;
 `;
