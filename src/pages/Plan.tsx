@@ -3,34 +3,46 @@ import plus from "../assets/plan_white.svg";
 import arrow from "../assets/arrow.svg";
 import money from "../assets/money.svg";
 import list from "../assets/list.svg";
+import { useState } from "react";
+import Modal from "../components/Modal";
 
 export default function Plan() {
+  const [modal, setModal] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setModal(true);
+  }
+
   return (
-    <SubscriptionsContainer>
-      <img src={arrow} alt="" />
-      <img src={plus} alt="" />
-      <h1>Driven Plus</h1>
-      <div>
-        <img src={list} alt="" />
-        <h2>Benefícios:</h2>
-      </div>
-      <ol>
-        <li>Brindes exclusivos </li>
-        <li>Materiais bônus de web</li>
-      </ol>
-      <div>
-        <img src={money} alt="" />
-        <h2>Benefícios:</h2>
-      </div>
-      <p>R$ 39,99 cobrados mensalmente</p>
-      <Form>
-        <input type="text" placeholder="Nome impresso no cartão" />
-        <input type="text" placeholder="Digitos do cartão" />
-        <input type="text" placeholder="Código de segurança" />
-        <input type="text" placeholder="Validade" />
-        <button>Assinar</button>
-      </Form>
-    </SubscriptionsContainer>
+    <>
+      <SubscriptionsContainer>
+        <img src={arrow} alt="" />
+        <img src={plus} alt="" />
+        <h1>Driven Plus</h1>
+        <div>
+          <img src={list} alt="" />
+          <h2>Benefícios:</h2>
+        </div>
+        <ol>
+          <li>Brindes exclusivos </li>
+          <li>Materiais bônus de web</li>
+        </ol>
+        <div>
+          <img src={money} alt="" />
+          <h2>Benefícios:</h2>
+        </div>
+        <p>R$ 39,99 cobrados mensalmente</p>
+        <Form onSubmit={handleSubmit}>
+          <input type="text" placeholder="Nome impresso no cartão" />
+          <input type="text" placeholder="Digitos do cartão" />
+          <input type="text" placeholder="Código de segurança" />
+          <input type="text" placeholder="Validade" />
+          <button>Assinar</button>
+        </Form>
+      </SubscriptionsContainer>
+      {modal && <Modal setModal={setModal} />}
+    </>
   );
 }
 
