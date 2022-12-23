@@ -5,6 +5,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Subscriptions from "./Subscriptions";
 import Home from "./Home";
+import Plan from "./Plan";
 
 export default function Main() {
   return (
@@ -16,6 +17,7 @@ export default function Main() {
             <Route path="/" element={<Login/>} />
             <Route path="/sign-up" element={<Signup/>} />
             <Route path="/subscriptions" element={<Subscriptions/>} />
+            <Route path="/subscriptions/plan" element={<Plan/>} />
             <Route path="/home" element={<Home/>} />
           </Routes>
         </BrowserRouter>
