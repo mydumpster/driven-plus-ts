@@ -2,6 +2,7 @@ import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import drivenPlus from "../api/drivenPlus";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -9,7 +10,9 @@ export default function Login() {
 
   function login(event: React.FormEvent) {
     event.preventDefault();
-    console.log(email, password);
+    drivenPlus.fazerLogin({ email, password })
+    .then((response) => {console.log(response.data)})
+    .catch((error) => {window.alert(error.response.data.message)});
   }
 
   return (
@@ -21,12 +24,14 @@ export default function Login() {
           placeholder="E-mail"
           type="email"
           value={email}
+          required
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Senha"
           type="password"
           value={password}
+          required
         />
         <button type="submit">ENTRAR</button>
       </form>

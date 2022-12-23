@@ -8,23 +8,28 @@ import Home from "./Home";
 import Plan from "./Plan";
 import Update from "./Update";
 import User from "./User";
+import UserContext from "../contexts/UserContext";
+import { useState } from "react";
 
 export default function Main() {
+  const [user, setUser] = useState(undefined);
   return (
     <>
       <GlobalStyle />
       <MainContainer>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login/>} />
-            <Route path="/sign-up" element={<Signup/>} />
-            <Route path="/subscriptions" element={<Subscriptions/>} />
-            <Route path="/subscriptions/plan" element={<Plan/>} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/update" element={<Update/>} />
-            <Route path="/user" element={<User/>} />
-          </Routes>
-        </BrowserRouter>
+        <UserContext.Provider value={{user, setUser}}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/sign-up" element={<Signup />} />
+              <Route path="/subscriptions" element={<Subscriptions />} />
+              <Route path="/subscriptions/plan" element={<Plan />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/update" element={<Update />} />
+              <Route path="/user" element={<User />} />
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
       </MainContainer>
     </>
   );
@@ -32,10 +37,10 @@ export default function Main() {
 
 const MainContainer = styled.div`
   align-items: center;
-  background-color: #0E0E13;
+  background-color: #0e0e13;
   color: #fff;
   display: flex;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   height: 100vh;
   justify-content: center;

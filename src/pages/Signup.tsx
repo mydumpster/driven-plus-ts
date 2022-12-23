@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import drivenPlus from "../api/drivenPlus";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -12,6 +13,9 @@ export default function Signup() {
 
   function login(event: React.FormEvent) {
     event.preventDefault();
+    drivenPlus.fazerCadastro(form)
+    .then((response) => {console.log(response.data)})
+    .catch((error) => {window.alert(error.response.data.message)});
   }
 
   function handleForm(event: React.ChangeEvent<HTMLInputElement>) {
@@ -30,6 +34,7 @@ export default function Signup() {
           placeholder="Nome"
           type="text"
           value={form.name}
+          required
         />
         <input
           name="cpf"
@@ -37,6 +42,7 @@ export default function Signup() {
           placeholder="CPF"
           type="text"
           value={form.cpf}
+          required
         />
         <input
           name="email"
@@ -44,6 +50,7 @@ export default function Signup() {
           placeholder="E-mail"
           type="email"
           value={form.email}
+          required
         />
         <input
           name="password"
@@ -51,6 +58,7 @@ export default function Signup() {
           placeholder="Senha"
           type="password"
           value={form.password}
+          required
         />
         <button type="submit">CADASTRAR</button>
       </form>
